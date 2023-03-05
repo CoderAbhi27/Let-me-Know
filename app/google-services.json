@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "374058113993",
+    "project_id": "let-me-know-50540",
+    "storage_bucket": "let-me-know-50540.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:374058113993:android:1001909535583ea4f9a618",
+        "android_client_info": {
+          "package_name": "com.example.letmeknow"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "374058113993-op6osqpdeibj1fp2420vah7p62inas4o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBGZGx7PzJgi-iOknD8qxNnISctOPnMG74"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "374058113993-op6osqpdeibj1fp2420vah7p62inas4o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
