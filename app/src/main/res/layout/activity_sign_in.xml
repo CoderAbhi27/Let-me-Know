@@ -13,11 +13,9 @@
         android:text="WELCOME"
         android:textStyle="bold"
         android:textAlignment="center"
-        android:textSize="60dp"
+        android:textSize="60sp"
         android:layout_marginTop="100dp"
         android:textColor="#6ECC36"
-
-
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -55,7 +53,6 @@
         android:src="@drawable/account"
         app:layout_constraintBottom_toBottomOf="@+id/emailLayout"
         app:layout_constraintEnd_toStartOf="@+id/emailLayout"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/emailLayout" />
 
@@ -100,7 +97,7 @@
         android:layout_marginTop="15dp"
         android:layout_marginRight="20dp"
         android:text="Forgot Password?"
-        android:textSize="15dp"
+        android:textSize="15sp"
         android:textColor="#4F79E3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/passwordLayout" />
@@ -115,7 +112,7 @@
         android:backgroundTint="#6ECC36"
         android:text="LOGIN"
         android:textColor="@color/white"
-        android:textSize="25dp"
+        android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/passwordLayout" />
@@ -129,7 +126,7 @@
         android:layout_marginTop="20dp"
         android:textColor="@color/white"
         android:text="Don't have an account?"
-        android:textSize="15dp"
+        android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.348"
         app:layout_constraintStart_toStartOf="parent"
@@ -140,8 +137,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:layout_marginLeft="10dp"
-
+        android:layout_marginStart="10dp"
+        android:textSize="15sp"
         android:text="Sign Up"
         android:textColor="#4F79E3"
 
