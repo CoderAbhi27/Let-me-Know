@@ -1,4 +1,4 @@
-package com.example.letmeknow
+package com.example.letmeknow.Activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
