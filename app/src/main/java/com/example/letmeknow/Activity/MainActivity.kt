@@ -44,9 +44,15 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        val ViewPoll : Button = findViewById(R.id.ViewPolls)
-        ViewPoll.setOnClickListener {
+        val viewPoll : Button = findViewById(R.id.ViewPolls)
+        viewPoll.setOnClickListener {
             val intent = Intent(this, ViewPollsActivity::class.java)
+            startActivity(intent)
+        }
+
+        val voteOnPolls : Button = findViewById(R.id.VoteOnPolls)
+        voteOnPolls.setOnClickListener{
+            val intent = Intent(this, VotingActivity::class.java)
             startActivity(intent)
         }
 

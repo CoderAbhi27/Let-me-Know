@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Activity.CreatePollActivity">
+    tools:context=".Activity.CreatePollActivity"
+    android:background="#9FE6E0">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,29 +17,61 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="10dp"
-            android:layout_marginTop="30dp"
-
+            android:paddingHorizontal="10dp"
+            android:layout_marginTop="10dp"
+            android:paddingTop="20dp"
+            android:background="@color/white"
             android:text="Poll Question"
             android:textSize="20sp"
             android:textColor="@color/black"
             android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/PollQuestion"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="10dp"
-            android:hint="Ask your question"
-            android:inputType="text"
-            android:paddingTop="15dp" />
+            android:background="@color/white"
+            android:paddingBottom="10dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/PollQuestion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="10dp"
+                android:hint="Ask your question"
+                android:inputType="text"
+                android:paddingTop="15dp" />
+
+            <ImageButton
+                android:id="@+id/InsertImageQues"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/add_image"
+                android:scaleType="centerInside"
+                android:background="@color/white"
+                android:layout_weight="8.5"
+                />
+            
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/ImageQues"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:paddingHorizontal="10dp"
+            android:paddingBottom="10dp"
+            android:background="@color/white"
+            android:scaleType="fitStart"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="10dp"
+            android:paddingTop="10dp"
             android:paddingBottom="10dp"
-            android:layout_marginHorizontal="10dp"
+            android:paddingHorizontal="10dp"
+            android:background="@color/white"
             android:text="Poll Type"
             android:textSize="20sp"
             android:textColor="@color/black"
@@ -48,7 +81,8 @@
             android:id="@+id/MultiAnsSwitch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
+            android:paddingHorizontal="20dp"
+            android:background="@color/white"
             android:text="Multiple Answers" />
 
         <!--<androidx.appcompat.widget.SwitchCompat
@@ -61,15 +95,19 @@
             android:id="@+id/QuizModeSwitch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
+            android:paddingHorizontal="20dp"
+            android:paddingBottom="10dp"
+            android:background="@color/white"
             android:text="Quiz Mode" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="10dp"
-            android:layout_marginTop="30dp"
+            android:paddingHorizontal="10dp"
+            android:layout_marginTop="10dp"
+            android:paddingTop="10dp"
             android:paddingBottom="10dp"
+            android:background="@color/white"
             android:text="Options"
             android:textSize="20sp"
             android:textColor="@color/black"
@@ -110,7 +148,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="10dp"
+            android:paddingHorizontal="10dp"
+            android:background="@color/white"
             android:orientation="horizontal">
 
             <TextView
@@ -135,7 +174,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="10dp"
+            android:paddingHorizontal="10dp"
+            android:background="@color/white"
             android:orientation="horizontal">
 
             <TextView
@@ -160,7 +200,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="10dp"
+            android:paddingHorizontal="10dp"
+            android:background="@color/white"
             android:orientation="horizontal">
 
             <TextView
@@ -185,7 +226,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="10dp"
+            android:paddingHorizontal="10dp"
+            android:paddingBottom="10dp"
+            android:background="@color/white"
             android:orientation="horizontal">
 
             <TextView
@@ -207,15 +250,101 @@
 
         </LinearLayout>
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="10dp"
+            android:layout_marginTop="10dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:background="@color/white"
+            android:text="Poll Duration"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="20dp"
+            android:paddingEnd="30dp"
+            android:paddingTop="10dp"
+            android:background="@color/white"
+            android:paddingBottom="20dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/days"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2.25"
+                android:textAlignment="center"
+                android:hint="0"
+                android:inputType="number"
+                android:background="@drawable/duration_et_border"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:paddingStart="6dp"
+                android:paddingEnd="12dp"
+                android:text="Days"/>
+
+            <EditText
+                android:id="@+id/hrs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2.25"
+                android:textAlignment="center"
+                android:hint="0"
+                android:inputType="number"
+                android:background="@drawable/duration_et_border"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:paddingStart="6dp"
+                android:paddingEnd="12dp"
+                android:text="Hours"/>
+
+            <EditText
+                android:id="@+id/mins"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2.25"
+                android:textAlignment="center"
+                android:hint="0"
+                android:inputType="number"
+                android:background="@drawable/duration_et_border"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:paddingStart="6dp"
+
+                android:text="Minutes"/>
+
+        </LinearLayout>
+
+
+
+
+
 
         <Button
             android:id="@+id/CreatePoll"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="30dp"
             android:layout_marginHorizontal="100dp"
+            android:layout_marginBottom="20dp"
             android:text="CREATE POLL"
             android:textStyle="bold"/>
+
+
 
 
 
