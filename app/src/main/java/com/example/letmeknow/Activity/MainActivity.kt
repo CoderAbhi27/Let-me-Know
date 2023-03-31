@@ -4,27 +4,75 @@ import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Button
 import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
+import androidx.fragment.app.replace
 import com.example.letmeknow.R
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
 class MainActivity : AppCompatActivity() {
+
     private lateinit var firebaseAuth: FirebaseAuth
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+//        supportActionBar?.setTitle("  Opinion Trader")
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+//        supportActionBar?.setIcon(R.drawable.home_icon)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         firebaseAuth = FirebaseAuth.getInstance()
-        val firebase: DatabaseReference = FirebaseDatabase.getInstance().getReference()
 
         setContentView(R.layout.activity_main)
-        val logout: Button = findViewById(R.id.logOut)
-        logout.setOnClickListener{
+
+        replaceFragment(VotingFragment())
+
+        val bottomNavigationView : BottomNavigationView = findViewById(R.id.BottomNavigationView)
+        bottomNavigationView.setOnItemSelectedListener {
+
+            if(it.itemId == R.id.LivePolls){
+                replaceFragment(VotingFragment())
+            }
+            if (it.itemId == R.id.PollResults){
+                replaceFragment(PollResultsFragment())
+            }
+            if (it.itemId == R.id.MyPolls){
+                replaceFragment(MyPollsFragment())
+            }
+            return@setOnItemSelectedListener true
+        }
+
+        val poll : FloatingActionButton = findViewById(R.id.CreatePoll)
+        poll.setOnClickListener {
+            val intent = Intent(this, CreatePollActivity::class.java)
+            startActivity(intent)
+        }
+
+    }
+
+    private fun replaceFragment(fragment: Fragment) {
+        val fragmentTransaction : FragmentTransaction = supportFragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.frame, fragment)
+        fragmentTransaction.commit()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menu!!.add("Log Out")
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if(item.title?.equals("Log Out") == true){
             val builder = AlertDialog.Builder(this)
             builder.setTitle("LOG OUT")
             builder.setMessage("Are you sure?")
@@ -37,24 +85,8 @@ class MainActivity : AppCompatActivity() {
             val alertDialog: AlertDialog = builder.create()
             alertDialog.show()
         }
-
-        val poll : Button = findViewById(R.id.CreatePoll)
-        poll.setOnClickListener {
-            val intent = Intent(this, CreatePollActivity::class.java)
-            startActivity(intent)
-        }
-
-        val viewPoll : Button = findViewById(R.id.ViewPolls)
-        viewPoll.setOnClickListener {
-            val intent = Intent(this, ViewPollsActivity::class.java)
-            startActivity(intent)
-        }
-
-        val voteOnPolls : Button = findViewById(R.id.VoteOnPolls)
-        voteOnPolls.setOnClickListener{
-            val intent = Intent(this, VotingActivity::class.java)
-            startActivity(intent)
-        }
-
+        if(item.itemId == android.R.id.home)
+            onBackPressed()
+        return super.onOptionsItemSelected(item)
     }
 }

@@ -1,11 +1,17 @@
 package com.example.letmeknow.Activity
 
+import android.content.DialogInterface
+import android.content.Intent
 import android.graphics.Color
+import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.view.MenuItem
+import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.core.view.get
 import com.example.letmeknow.R
 import com.github.mikephil.charting.charts.BarChart
@@ -15,6 +21,7 @@ import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.github.mikephil.charting.formatter.ValueFormatter
 import com.github.mikephil.charting.utils.ColorTemplate
+import com.squareup.picasso.Picasso
 
 class BarChartActivity : AppCompatActivity() {
 
@@ -22,9 +29,14 @@ class BarChartActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        supportActionBar?.setTitle("Poll Details")
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         setContentView(R.layout.activity_bar_chart)
 
         val PollQues = intent.getStringExtra("PollQues")
+        val quesImg = intent.getStringExtra("QuesImg")
         val PollOptions = intent.getStringArrayListExtra("PollOptions")
         val Votes = intent.getIntegerArrayListExtra("Votes")
         val endTimeMilli = intent.getLongExtra("endTime", 0L)
@@ -49,6 +61,7 @@ class BarChartActivity : AppCompatActivity() {
         }
 
         val tvQues : TextView = findViewById(R.id.Question)
+        val ivQuesImg : ImageView = findViewById(R.id.quesImg)
         val tvOp1 : TextView = findViewById(R.id.Op1)
         val tvOp2 : TextView = findViewById(R.id.Op2)
         val tvOp3 : TextView = findViewById(R.id.Op3)
@@ -62,6 +75,12 @@ class BarChartActivity : AppCompatActivity() {
         val ivLive : ImageView = findViewById(R.id.live)
 
         tvQues.text = PollQues
+
+        if(quesImg!=null){
+            Picasso.get().load(quesImg).into(ivQuesImg)
+            ivQuesImg.layoutParams.height = 500
+        }
+
         tvOp1.text = PollOptions!![0]
         tvOp2.text = PollOptions[1]
         tvOp3.text = PollOptions[2]
@@ -71,6 +90,7 @@ class BarChartActivity : AppCompatActivity() {
         tvPerVote3.text = "$perVote3%"
         tvPerVote4.text = "$perVote4%"
         tvTotalVotes.text = "Total votes = $sumVotes"
+
 
         if(endTimeMilli<=currTimeMilli){
             ivLive.setImageResource(R.drawable.completed)
@@ -123,6 +143,14 @@ class BarChartActivity : AppCompatActivity() {
         barChart.xAxis.granularity = 1f
         barChart.xAxis.isGranularityEnabled = true
 
+        barChart.axisLeft.axisMinimum = 0f
+        barChart.axisLeft.axisMaximum = 100f
+        barChart.axisLeft.granularity = 10f
+
+        barChart.axisRight.axisMinimum = 0f
+        barChart.axisRight.axisMaximum = 100f
+        barChart.axisRight.granularity = 10f
+
         barChart.setFitBars(true)
 
         barChart.description.text = ""
@@ -143,4 +171,11 @@ class BarChartActivity : AppCompatActivity() {
         return (days.toString() + String.format(":%02d:%02d:%02d",hrs,min,sec))
 
     }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if(item.itemId == android.R.id.home)
+            onBackPressed()
+        return super.onOptionsItemSelected(item)
+    }
+
 }

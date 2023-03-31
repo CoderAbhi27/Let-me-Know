@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/LivePolls"
+        android:title="Live Polls"
+        android:icon="@drawable/live_poll"/>
+    <item
+        android:id="@+id/PollResults"
+        android:title="Poll Results"
+        android:icon="@drawable/finished_poll"/>
+    <item
+        android:id="@+id/MyPolls"
+        android:title="My Polls"
+        android:icon="@drawable/profile"/>
+</menu>

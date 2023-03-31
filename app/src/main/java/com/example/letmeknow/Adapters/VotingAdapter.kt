@@ -22,7 +22,7 @@ class VotingAdapter(private var DataList: ArrayList<PollDataClass>, val context:
     private var voteOn = ArrayList<Int>()
 
     interface onItemClickListener{
-        fun onItemClick(position: Int, voteOn : ArrayList<Int>)
+        fun onItemClick(position: Int, voteOn : ArrayList<Int>, key : String)
     }
 
     fun setOnItemClickListener(listener: onItemClickListener){
@@ -45,6 +45,7 @@ class VotingAdapter(private var DataList: ArrayList<PollDataClass>, val context:
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.setIsRecyclable(false)
         val currentData = DataList[position]
         if(currentData.QuesImg!=null){
             Picasso.get().load(currentData.QuesImg).into(holder.ivQuesImg)
@@ -67,6 +68,7 @@ class VotingAdapter(private var DataList: ArrayList<PollDataClass>, val context:
 
             override fun onFinish() {
                 DataList.remove(currentData)
+                notifyDataSetChanged()
             }
 
         }.start()
@@ -80,8 +82,8 @@ class VotingAdapter(private var DataList: ArrayList<PollDataClass>, val context:
             holder.voteButton.setOnClickListener{
                 if(holder.c1.isChecked || holder.c2.isChecked || holder.c3.isChecked || holder.c4.isChecked){
                     val builder = AlertDialog.Builder(context)
-                    builder.setTitle("CONFIRM VOTE?")
-//            builder.setMessage("Are you sure?")
+                    builder.setTitle("Confirm Vote?")
+//                    builder.setMessage("CONFIRM VOTE?")
                     builder.setPositiveButton("CONFIRM", DialogInterface.OnClickListener{ dialog, which->
                         voteOn.clear()
                         if(holder.c1.isChecked){
@@ -97,7 +99,7 @@ class VotingAdapter(private var DataList: ArrayList<PollDataClass>, val context:
                             voteOn.add(3)
                         }
 
-                        mListener.onItemClick(position, voteOn)
+                        mListener.onItemClick(position, voteOn, currentData.pollID!!)
                     })
                     builder.setNegativeButton("Cancel", DialogInterface.OnClickListener{ dialog, which-> })
                     val alertDialog: AlertDialog = builder.create()
@@ -125,7 +127,7 @@ class VotingAdapter(private var DataList: ArrayList<PollDataClass>, val context:
                         if(holder.r3.isChecked) voteOn.add(2)
                         if(holder.r4.isChecked) voteOn.add(3)
 
-                        mListener.onItemClick(position, voteOn)
+                        mListener.onItemClick(position, voteOn, currentData.pollID!!)
                     })
                     builder.setNegativeButton("Cancel", DialogInterface.OnClickListener{ dialog, which-> })
                     val alertDialog: AlertDialog = builder.create()

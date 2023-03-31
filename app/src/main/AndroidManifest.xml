@@ -12,13 +12,13 @@
         android:theme="@style/Theme.LetMeKnow"
         tools:targetApi="31">
         <activity
-            android:name=".Activity.VotingActivity"
+            android:name=".Activity.VotingFragment"
             android:exported="false" />
         <activity
             android:name=".Activity.BarChartActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.ViewPollsActivity"
+            android:name=".Activity.MyPollsFragment"
             android:exported="false" />
         <activity
             android:name=".Activity.CreatePollActivity"

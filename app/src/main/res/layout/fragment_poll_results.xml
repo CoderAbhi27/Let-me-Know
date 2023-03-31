@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.ViewPollsActivity">
+    tools:context=".Activity.VotingFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/ViewPolls"
+        android:id="@+id/rvPollResults"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        tools:listitem="@layout/each_poll_result"
 
-        tools:listitem="@layout/each_poll"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -1,7 +1,6 @@
 package com.example.letmeknow.Adapters
 
-import android.graphics.BitmapFactory
-import android.os.CountDownTimer
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,10 +12,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.letmeknow.DataClass.PollDataClass
 import com.example.letmeknow.R
 import com.squareup.picasso.Picasso
-import java.util.Base64
 
-class ViewPollsAdapter(private var DataList: ArrayList<PollDataClass>) :
-    RecyclerView.Adapter<ViewPollsAdapter.ViewHolder>(){
+class PollResultsAdapter(private var DataList: ArrayList<PollDataClass>) :
+    RecyclerView.Adapter<PollResultsAdapter.ViewHolder>(){
 
 //    var onItemclick : ((PollDataClass) -> Unit)?= null
 
@@ -32,7 +30,7 @@ class ViewPollsAdapter(private var DataList: ArrayList<PollDataClass>) :
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val ItemView = LayoutInflater.from(parent.context).inflate(R.layout.each_poll, parent, false)
+        val ItemView = LayoutInflater.from(parent.context).inflate(R.layout.each_poll_result, parent, false)
         return ViewHolder(ItemView)
     }
 
@@ -60,38 +58,15 @@ class ViewPollsAdapter(private var DataList: ArrayList<PollDataClass>) :
         holder.tvOp2.text = currentData.Options[1]
         holder.tvOp3.text = currentData.Options[2]
         holder.tvOp4.text = currentData.Options[3]
-        holder.tvVote1.text = "${currentData.Votes[0]}"
-        holder.tvVote2.text = "${currentData.Votes[1]}"
-        holder.tvVote3.text = "${currentData.Votes[2]}"
-        holder.tvVote4.text = "${currentData.Votes[3]}"
+        holder.tvVote1.text = "${perVotes[0]}%"
+        holder.tvVote2.text = "${perVotes[1]}%"
+        holder.tvVote3.text = "${perVotes[2]}%"
+        holder.tvVote4.text = "${perVotes[3]}%"
         holder.pb1.progress = perVotes[0].toInt()
         holder.pb2.progress = perVotes[1].toInt()
         holder.pb3.progress = perVotes[2].toInt()
         holder.pb4.progress = perVotes[3].toInt()
 
-        val currTimeMilli : Long = System.currentTimeMillis()
-        if(currentData.endTimeMilli<= currTimeMilli){
-            holder.ivLive.setImageResource(R.drawable.completed)
-            holder.tvTimer.text = "POLL RESULTS   "
-        }else{
-            holder.ivLive.setImageResource(R.drawable.live)
-            holder.tvTimer.text = convert_to_timer(currentData.endTimeMilli - System.currentTimeMillis())
-
-            if (holder.timer!=null) {
-                holder.timer!!.cancel()
-            }
-            holder.timer = object : CountDownTimer(currentData.endTimeMilli - currTimeMilli , 1000) {
-                override fun onTick(p0: Long) {
-                    holder.tvTimer.text = convert_to_timer(p0)
-                }
-
-                override fun onFinish() {
-                    holder.ivLive.setImageResource(R.drawable.completed)
-                    holder.tvTimer.text = "POLL RESULTS    "
-                }
-
-            }.start()
-        }
 
         holder.detailsButton.setOnClickListener{
             mListener.onItemClick(position)
@@ -103,14 +78,6 @@ class ViewPollsAdapter(private var DataList: ArrayList<PollDataClass>) :
         return DataList.size
     }
 
-    private fun convert_to_timer(p0: Long): String {
-        val sec = (p0/1000%60).toInt()
-        val min = (p0/(1000*60)%60).toInt()
-        val hrs = (p0/(1000*60*60)%24).toInt()
-        val days = (p0/(1000*60*60*24)).toInt()
-        return (days.toString() + String.format(":%02d:%02d:%02d",hrs,min,sec))
-
-    }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view){
         val tvQues : TextView = view.findViewById(R.id.Question)
@@ -128,9 +95,6 @@ class ViewPollsAdapter(private var DataList: ArrayList<PollDataClass>) :
         val pb3 : ProgressBar = view.findViewById(R.id.pb3)
         val pb4 : ProgressBar = view.findViewById(R.id.pb4)
         val detailsButton : Button = view.findViewById(R.id.ViewBarChart)
-        val tvTimer : TextView = view.findViewById(R.id.Timer)
-        val ivLive : ImageView = view.findViewById(R.id.Live)
-        var timer : CountDownTimer?=null
 
 
     }

@@ -160,6 +160,7 @@
 
         android:layout_marginTop="20dp"
         android:text="Sign In"
+        android:clickable="true"
         android:layout_marginStart="10dp"
         android:textColor="#4F79E3"
         android:textSize="15sp"
