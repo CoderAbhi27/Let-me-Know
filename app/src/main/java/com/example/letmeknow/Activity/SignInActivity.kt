@@ -64,6 +64,7 @@ class SignInActivity : AppCompatActivity() {
                 pd.dismiss()
                 Toast.makeText(this, "Email or password cannot be empty", Toast.LENGTH_SHORT)
                     .show()
+
             }
         }
     }
@@ -76,4 +77,8 @@ class SignInActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
+
+
+
+
 }

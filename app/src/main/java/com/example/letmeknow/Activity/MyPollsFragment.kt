@@ -30,8 +30,6 @@ class MyPollsFragment : Fragment(R.layout.fragment_my_polls) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
-
     }
 
     override fun onCreateView(

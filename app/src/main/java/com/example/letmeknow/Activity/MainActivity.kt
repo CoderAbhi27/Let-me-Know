@@ -26,9 +26,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-//        supportActionBar?.setTitle("  Opinion Trader")
-        supportActionBar?.setDisplayShowHomeEnabled(true)
-//        supportActionBar?.setIcon(R.drawable.home_icon)
+
+//        supportActionBar?.setDisplayShowHomeEnabled(true)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         firebaseAuth = FirebaseAuth.getInstance()

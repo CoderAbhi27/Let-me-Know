@@ -49,18 +49,10 @@ class CreatePollActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_poll)
 
-        supportActionBar?.setDisplayShowHomeEnabled(true)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setTitle("Create Poll")
-        supportActionBar?.show()
-
-
-//        OptionsRecyclerView = findViewById(R.id.CreateOptions)
-//        OptionsRecyclerView.layoutManager = LinearLayoutManager(this)
-//        OptionsRecyclerView.setHasFixedSize(true)
-
-
-
+//        supportActionBar?.setDisplayShowHomeEnabled(true)
+//        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+//        supportActionBar?.setTitle("Create Poll")
+//        supportActionBar?.show()
 
         val InsertImage : ImageButton = findViewById(R.id.InsertImageQues)
         InsertImage.setOnClickListener{
@@ -72,7 +64,6 @@ class CreatePollActivity : AppCompatActivity() {
         CreatePoll.setOnClickListener{
             val builder = AlertDialog.Builder(this)
             builder.setTitle("Create this poll?")
-//                    builder.setMessage("CONFIRM VOTE?")
             builder.setPositiveButton("OK", DialogInterface.OnClickListener{ dialog, which->
                 createPoll()
             })
